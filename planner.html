@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <meta name="description" content="Build an India itinerary, estimate your budget, and save your trip plan with TravelTales.">
+  <title>India trip planner — TravelTales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="destinations.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="translation.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="TravelTales home"><span class="brand-mark">t</span>travel<span>tales</span></a>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="places.html">Explore India</a>
+      <a class="active" href="planner.html">Trip planner</a>
+      <a href="trip-advice.html">Trip advice</a>
+      <a href="stays.html">Stays &amp; packages</a>
+    </nav>
+    <label class="language-control" for="site-language"><span aria-hidden="true">🌐</span><span class="language-label">Language</span><select id="site-language" aria-label="Choose website language" disabled><option value="en" translate="no">English</option><option value="hi" translate="no">हिन्दी · Hindi</option><option value="mr" translate="no">मराठी · Marathi</option><option value="ta" translate="no">தமிழ் · Tamil</option><option value="ur" translate="no">اردو · Urdu</option><option value="fr" translate="no">Français · French</option><option value="es" translate="no">Español · Spanish</option><option value="ru" translate="no">Русский · Russian</option></select><span id="language-status" class="language-status" data-no-translate role="status" aria-live="polite"></span></label>
+    <a class="button button-dark header-cta" href="places.html">Add places <span>↗</span></a>
+  </header>
+
+  <main class="inner-page planner-page">
+    <section class="planner-heading section-wrap">
+      <span class="eyebrow"><span class="eyebrow-dot"></span> YOUR INDIA ADVENTURE</span>
+      <h1>Plan a trip <em>your way.</em></h1>
+      <p>Choose memorable stops, estimate your spend, and shape a route that feels like yours.</p>
+      <div class="trip-details"><span>☼ &nbsp; Flexible trip length</span><span>⌖ &nbsp; Across India</span><span>♡ &nbsp; Your pace, your picks</span></div>
+      <label class="starting-location" for="starting-location"><span>START YOUR JOURNEY FROM</span><input id="starting-location" type="text" list="starting-location-options" maxlength="120" placeholder="Enter a city, station, or address"><datalist id="starting-location-options"></datalist></label>
+    </section>
+
+    <section class="planner-layout section-wrap">
+      <div class="itinerary-column">
+        <div class="itinerary-toolbar"><div><span class="eyebrow">YOUR ITINERARY</span><h2 id="itinerary-count">Your day, at a glance</h2></div><button class="clear-plan" id="clear-plan">Clear all</button></div>
+        <div class="itinerary-list" id="itinerary-list" aria-live="polite"></div>
+        <div class="empty-plan" id="empty-plan" hidden><span class="empty-plan-icon">✳</span><h3>Your day is a blank page.</h3><p>Add a few places from Explore and let the good times roll.</p><a class="button button-dark" href="places.html">Find places to visit <span>↗</span></a></div>
+        <div class="day-note"><span>✦</span><p><strong>A local tip</strong><br>Opening hours and travel times can change. Check locally before you go, and leave a little breathing room between stops.</p></div>
+        <section class="budget-card" aria-labelledby="budget-heading">
+          <div class="budget-heading"><div><span class="eyebrow">MONEY, WITHOUT THE GUESSWORK</span><h2 id="budget-heading">Your trip budget.</h2></div><span class="budget-currency">INR ₹</span></div>
+          <div class="budget-fields budget-fields-wide">
+            <label>Trip days<input id="trip-days" type="number" min="1" max="30" value="1"></label>
+            <label>Travellers<input id="traveller-count" type="number" min="1" max="20" value="1"></label>
+            <label>Hotel nights<input id="hotel-nights" type="number" min="0" max="30" value="1"></label>
+            <label>Rooms (about 1 per 2 guests)<input id="hotel-rooms" type="number" min="1" max="20" value="1"></label>
+            <label>Travel style<select id="travel-style"><option value="1">Budget</option><option value="1.6" selected>Comfort</option><option value="2.4">Premium</option></select></label>
+          </div>
+          <div class="budget-total"><span>ESTIMATED TRIP TOTAL</span><strong id="budget-total">₹0</strong><p id="budget-caption">Add places to see your estimate.</p></div>
+          <div class="budget-breakdown" id="budget-breakdown" aria-live="polite"></div>
+          <p class="budget-disclaimer">Hotel estimates are per room, per night; the total uses your selected nights and rooms. Meals, local transport, and activities are estimated per traveller. Intercity travel, actual hotel prices, and seasonal rates vary.</p>
+        </section>
+        <div class="finish-planning"><div><strong>Ready to make it official?</strong><p>Finish your plan and tell us what you think.</p></div><div class="planner-actions"><button class="button button-share" id="share-plan" type="button">Share trip <span>↗</span></button><button class="button button-orange" id="finish-planning" type="button">Finish planning <span>↗</span></button></div></div>
+        <p class="share-status" id="share-status" role="status" aria-live="polite"></p>
+      </div>
+      <aside class="trip-sidebar">
+        <div class="route-card"><span class="eyebrow eyebrow-light">YOUR ROUTE, YOUR RHYTHM</span><h3>Pick your stops.<br><em>Find your way.</em></h3>
+          <div class="route-art" aria-label="Illustration of the route through your selected trip locations"><span class="route-path"></span><span class="route-pin pin-one">1</span><span class="route-pin pin-two">2</span><span class="route-pin pin-three">3</span><span class="route-sun">☼</span><span class="route-label route-label-one">START</span><span class="route-label route-label-two">NEXT STOP</span><span class="route-label route-label-three">FINISH</span></div>
+          <p id="route-summary">Your selected places will come together here.</p>
+          <a class="button button-orange route-button" id="map-link" href="https://www.google.com/maps/search/India+tourist+places/" target="_blank" rel="noreferrer">Open route in Maps <span>↗</span></a>
+        </div>
+        <div class="sidebar-prompt"><span>✳</span><div><strong>Want to add a stop?</strong><p>Pick more local favourites and slot them into your day.</p><a href="places.html">Explore all places →</a></div></div>
+      </aside>
+    </section>
+  </main>
+
+  <dialog class="review-dialog" id="review-dialog" aria-labelledby="review-title">
+    <form id="review-form">
+      <button class="dialog-close" id="close-review" type="button" aria-label="Close review">×</button>
+      <span class="eyebrow"><span class="eyebrow-dot"></span> THAT’S A WRAP</span>
+      <h2 id="review-title">How was planning<br><em>your trip?</em></h2>
+      <p class="review-intro">Your feedback helps us make the next adventure even better.</p>
+      <fieldset class="rating-field"><legend>Your rating</legend><div class="rating-options">
+        <label><input type="radio" name="rating" value="1" required><span>1</span></label>
+        <label><input type="radio" name="rating" value="2"><span>2</span></label>
+        <label><input type="radio" name="rating" value="3"><span>3</span></label>
+        <label><input type="radio" name="rating" value="4"><span>4</span></label>
+        <label><input type="radio" name="rating" value="5"><span>5</span></label>
+      </div><span class="rating-hint">Not great <span>Lovely!</span></span></fieldset>
+      <label class="review-label" for="review-comment">Anything you’d like us to know? <span>Optional</span></label>
+      <textarea id="review-comment" name="comment" rows="3" maxlength="500" placeholder="Share a thought about your planning experience…"></textarea>
+      <p class="review-error" id="review-error" role="alert" hidden></p>
+      <div class="review-actions"><button class="button button-dark" type="submit">Send review <span>↗</span></button><button class="review-later" id="review-later" type="button">Maybe later</button></div>
+    </form>
+    <div class="review-thanks" id="review-thanks" hidden><span>✳</span><h2>Thanks for sharing!</h2><p>Your feedback is saved. Here’s to more lovely trips.</p><button class="button button-dark" id="review-done" type="button">Back to my plan</button></div>
+  </dialog>
+
+  <footer class="site-footer"><a class="brand brand-footer" href="index.html"><span class="brand-mark">t</span>travel<span>tales</span></a><p>Made for the curious, the spontaneous, and the “let’s take the long way” people.</p><div class="footer-links"><a href="places.html">Explore</a><a href="planner.html">Trip planner</a><a href="trip-advice.html">Trip advice</a><a href="stays.html">Stays &amp; packages</a><span>© 2025 TravelTales</span></div></footer>
+</body>
+</html>

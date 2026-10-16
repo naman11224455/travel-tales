@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <meta name="description" content="Get India trip suggestions that fit your destination, budget, travel style, and available days.">
+  <title>Trip advice by budget &amp; place — TravelTales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="destinations.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="translation.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="TravelTales home"><span class="brand-mark">t</span>travel<span>tales</span></a>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="places.html">Explore India</a>
+      <a href="planner.html">Trip planner</a>
+      <a class="active" href="trip-advice.html">Trip advice</a>
+      <a href="stays.html">Stays &amp; packages</a>
+    </nav>
+    <label class="language-control" for="site-language"><span aria-hidden="true">🌐</span><span class="language-label">Language</span><select id="site-language" aria-label="Choose website language" disabled><option value="en" translate="no">English</option><option value="hi" translate="no">हिन्दी · Hindi</option><option value="mr" translate="no">मराठी · Marathi</option><option value="ta" translate="no">தமிழ் · Tamil</option><option value="ur" translate="no">اردو · Urdu</option><option value="fr" translate="no">Français · French</option><option value="es" translate="no">Español · Spanish</option><option value="ru" translate="no">Русский · Russian</option></select><span id="language-status" class="language-status" data-no-translate role="status" aria-live="polite"></span></label>
+    <a class="button button-dark header-cta" href="#advice-form">Get advice <span>↗</span></a>
+  </header>
+
+  <main class="inner-page">
+    <section class="page-hero advice-hero">
+      <span class="eyebrow"><span class="eyebrow-dot"></span> GOOD TRIPS, REALISTIC BUDGETS</span>
+      <h1>Where to go<br><em>within your budget?</em></h1>
+      <p>Choose a place or explore all of India. Tell us your budget, travel style, and trip length to find an idea that fits.</p>
+      <a class="button button-dark" href="#advice-form">Find my trip idea <span>↓</span></a>
+    </section>
+
+    <section class="advice-section section-wrap" id="advice-form">
+      <div class="advice-intro">
+        <span class="eyebrow"><span class="eyebrow-dot"></span> YOUR PERSONAL TRIP SIDEKICK</span>
+        <h2>A little advice.<br><em>A lot more exploring.</em></h2>
+        <p>Set your total budget per person, choose how you like to travel, and pick a destination—or let us look across India.</p>
+        <div class="advice-note"><span>✳</span><p><strong>How estimates work</strong><br>Suggestions use an indicative daily budget for each destination, multiplied by your trip length and travel style. Intercity travel and seasonal price changes are not included.</p></div>
+      </div>
+
+      <form class="advice-form" id="trip-advice-form">
+        <label for="advice-place">Where would you like to go?</label>
+        <select id="advice-place" name="place" required>
+          <option value="">Loading places…</option>
+        </select>
+        <div class="advice-fields">
+          <label for="advice-budget">Total budget per person (₹)
+            <input id="advice-budget" name="budget" type="number" min="1000" max="10000000" step="500" placeholder="e.g. 15000" required>
+          </label>
+          <label for="advice-days">Trip length (days)
+            <input id="advice-days" name="days" type="number" min="1" max="30" value="3" required>
+          </label>
+        </div>
+        <label for="advice-style">Travel style
+          <select id="advice-style" name="style" required>
+            <option value="1">Budget</option>
+            <option value="1.6" selected>Comfort</option>
+            <option value="2.4">Premium</option>
+          </select>
+        </label>
+        <button class="button button-dark" type="submit">Show trip suggestions <span>↗</span></button>
+        <p class="advice-form-hint">Budget and estimates are per person. Actual trip costs vary by season and booking.</p>
+      </form>
+    </section>
+
+    <section class="advice-results-section" aria-labelledby="advice-results-heading">
+      <div class="section-wrap">
+        <div class="section-heading">
+          <div><span class="eyebrow"><span class="eyebrow-dot"></span> MADE FOR YOUR PLANS</span><h2 id="advice-results-heading">Your trip <em>suggestions.</em></h2></div>
+          <p class="section-intro">Choose a suggestion to open it in the trip planner and adjust your itinerary.</p>
+        </div>
+        <p class="advice-results-status" id="advice-results-status" aria-live="polite">Fill in your preferences to see places that match.</p>
+        <div class="advice-results-grid" id="advice-results" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand brand-footer" href="index.html"><span class="brand-mark">t</span>travel<span>tales</span></a>
+    <p>Made for the curious, the spontaneous, and the “let’s take the long way” people.</p>
+    <div class="footer-links"><a href="places.html">Explore India</a><a href="planner.html">Trip planner</a><a href="trip-advice.html">Trip advice</a><a href="stays.html">Stays &amp; packages</a><span>© 2025 TravelTales</span></div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ef">
+  <meta name="description" content="Explore handpicked places across every state and union territory in India.">
+  <title>Explore India — TravelTales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="destinations.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="translation.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="TravelTales home"><span class="brand-mark">t</span>travel<span>tales</span></a>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a class="active" href="places.html">Explore India</a>
+      <a href="planner.html">Trip planner</a>
+      <a href="trip-advice.html">Trip advice</a>
+      <a href="stays.html">Stays &amp; packages</a>
+    </nav>
+    <label class="language-control" for="site-language"><span aria-hidden="true">🌐</span><span class="language-label">Language</span><select id="site-language" aria-label="Choose website language" disabled><option value="en" translate="no">English</option><option value="hi" translate="no">हिन्दी · Hindi</option><option value="mr" translate="no">मराठी · Marathi</option><option value="ta" translate="no">தமிழ் · Tamil</option><option value="ur" translate="no">اردو · Urdu</option><option value="fr" translate="no">Français · French</option><option value="es" translate="no">Español · Spanish</option><option value="ru" translate="no">Русский · Russian</option></select><span id="language-status" class="language-status" data-no-translate role="status" aria-live="polite"></span></label>
+    <a class="button button-dark header-cta" href="planner.html">Plan a trip <span>↗</span></a>
+  </header>
+
+  <main class="inner-page">
+    <section class="page-hero places-hero">
+      <span class="eyebrow"><span class="eyebrow-dot"></span> 28 STATES · 8 UNION TERRITORIES</span>
+      <h1>One country.<br><em>A million stories.</em></h1>
+      <p>Explore handpicked highlights from every corner of India. See an indicative hotel rate for each place, ask about a stay, then make it your own.</p>
+      <div class="search-box"><span aria-hidden="true">⌕</span><label class="sr-only" for="place-search">Search places or states</label><input id="place-search" type="search" placeholder="Search a place, state, or experience"><span class="search-shortcut">⌕</span></div>
+    </section>
+
+    <section class="places-content section-wrap">
+      <div class="places-toolbar">
+        <label class="state-select-wrap" for="state-filter"><span>EXPLORE BY STATE</span><select id="state-filter"><option value="All">All India</option></select></label>
+        <span class="results-count" id="results-count">Loading destinations…</span>
+      </div>
+      <div class="places-grid" id="places-grid" aria-live="polite"></div>
+      <p class="empty-results" id="empty-results" hidden>No places found. Try another search or state.</p>
+    </section>
+
+    <aside class="planner-nudge"><div><span class="eyebrow">FOUND YOUR NEXT STOP?</span><h2>Make it a trip worth remembering.</h2></div><a class="button button-dark" href="planner.html">Build your itinerary <span>↗</span></a></aside>
+  </main>
+  <footer class="site-footer"><a class="brand brand-footer" href="index.html"><span class="brand-mark">t</span>travel<span>tales</span></a><p>Made for the curious, the spontaneous, and the “let’s take the long way” people.</p><div class="footer-links"><a href="places.html">Explore India</a><a href="planner.html">Trip planner</a><a href="trip-advice.html">Trip advice</a><a href="stays.html">Stays &amp; packages</a><span>© 2025 TravelTales</span></div></footer>
+</body>
+</html>

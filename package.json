@@ -1,0 +1,16 @@
+{
+  "name": "traveltales",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "build": "node --check server.js && node --check app.js && node --check destinations.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.4.1"
+  }
+}
